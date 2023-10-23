@@ -1,0 +1,9 @@
+### 1. test the basic endpoint
+POST http://localhost:6060/auth/addUser
+
+{
+    "full_name":"admin",
+    "email":"admin@gmail.com",
+    "password":"password1",
+    "role":1
+}

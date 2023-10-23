@@ -1,8 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require('body-parser');
+
 
 const app = express();
+app.use(bodyParser.json());
 
+app.use(bodyParser.urlencoded({ extended: true }));
 // set port, listen for requests
 const PORT = process.env.PORT || 6060;
 
@@ -25,6 +29,11 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to RecruitHub application." });
 });
 
+
+
+app.use('/auth', require("./routes/admin/auth.route"))
+
+
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+    console.log(`Server is running on port http://localhost:${PORT}.`);
 });
