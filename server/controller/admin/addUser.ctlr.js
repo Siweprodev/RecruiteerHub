@@ -20,7 +20,10 @@ exports.createUser = async(req, res) => {
     let verify = checkUser.rows;
 
     if (verify.length != 0) {
-        console.log("user already exists");
+        res.status(401).send({
+            status: 'Failed',
+            message: 'user already exists'
+        });
     } else {
         try {
             pool.connect((err, client, done) => {

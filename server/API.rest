@@ -1,9 +1,10 @@
 ### 1. test the basic endpoint
 POST http://localhost:6060/auth/addUser
+content-type: application/json
 
 {
-    "full_name":"admin",
-    "email":"admin@gmail.com",
+    "full_name":"leader tester",
+    "email":"leader@gmail.com",
     "password":"password1",
-    "role":1
+    "role":2
 }

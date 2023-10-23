@@ -15,4 +15,3 @@
 <!-- Test if the user (admin) has been created -->
     SELECT * FROM users;
 
-/Users/adelaide/Desktop/RecruiteerHub/server/database/table.db.sql
