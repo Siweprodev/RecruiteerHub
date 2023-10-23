@@ -23,6 +23,16 @@ CREATE TABLE users(
     created_at DATE DEFAULT CURRENT_DATE
 );
 
---insert into the users table
-INSERT INTO users (full_name, email, password, role)
-VALUES('admin tester', 'admin@gmail.com', 'password1', '1');
+-- create candidates table
+DROP TABLE IF EXISTS candidates CASCADE;
+CREATE TABLE candidates(
+    id SERIAL PRIMARY KEY Unique,
+    full_name VARCHAR(128) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    contacts VARCHAR(15) NOT NULL,
+    skills VARCHAR[] NOT NULL,
+    programme VARCHAR(128) NOT NULL,
+    resume_path VARCHAR(128) NOT NULL,
+    shortlisted VARCHAR(15) NOT NULL DEFAULT 'no',
+    created_at DATE DEFAULT CURRENT_DATE
+);

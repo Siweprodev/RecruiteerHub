@@ -1,5 +1,6 @@
 const db = require("../../config/db.config");
 const pool = db.pool;
+const bcrypt = require("bcrypt");
 
 
 exports.createUser = async(req, res) => {
@@ -16,8 +17,17 @@ exports.createUser = async(req, res) => {
         `SELECT * FROM users WHERE email = $1`, [data.email]
     );
 
+
     // 3. getting the specif rows from the api response 
     let verify = checkUser.rows;
+
+    // 4. hashing password
+    let salt = await bcrypt.genSalt(10);
+
+    // 5. setting password to hashed password
+    data.password = await bcrypt.hash(data.password, salt);
+
+
 
     if (verify.length != 0) {
         res.status(401).send({
